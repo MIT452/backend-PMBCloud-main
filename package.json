@@ -1,0 +1,43 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "backend",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "test:security": "jest --testPathPattern=security",
+    "test:coverage": "jest --coverage",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "lint": "eslint .",
+    "audit": "npm audit --audit-level=high",
+    "docker-build": "docker build -t pmbcloud-backend .",
+    "docker-run": "docker run -p 3001:3001 --env-file .env pmbcloud-backend",
+    "docker:scan": "docker scan pmbcloud-backend --file Dockerfile --severity high",
+    "security-check": "npm run audit && npx helmet-check"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.53.0",
+    "archiver": "^7.0.1",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.1.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mime": "^2.6.0",
+    "mongoose": "^9.1.5",
+    "qs": "^6.14.2",
+    "socket.io": "^4.8.1",
+    "supabase": "^2.48.3",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^6.3.3"
+  }
+}
